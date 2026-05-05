@@ -86,29 +86,17 @@ class EasyTangramEnv:
 
     # ── Step ─────────────────────────────────────────────────────────────────
     def move_piece(self, piece_idx, dx, dy):
-        """Grid-based move — no PPL involved."""
+        """Grid-based move. Bounds and locking enforced; overlaps between pieces allowed."""
         if self.locked[piece_idx]:
             return "Locked"
 
-        px, py     = self.piece_positions[piece_idx]
-        new_px     = px + dx
-        new_py     = py + dy
-
-        # Bounds: bottom-left corner must stay within [0, GRID_SIZE-1]
-        if not (0 <= new_px <= GRID_SIZE - 1 and 0 <= new_py <= GRID_SIZE - 1):
-            return "Out of bounds"
-
-        # Collision: no two pieces at the same grid cell
-        for j, (qx, qy) in enumerate(self.piece_positions):
-            if j != piece_idx and qx == new_px and qy == new_py:
-                return "Collision"
-
+        px, py = self.piece_positions[piece_idx]
+        new_px = px + dx
+        new_py = py + dy
         self.piece_positions[piece_idx] = (new_px, new_py)
 
-        # Snap: if within half a step of its target, lock it in place
         tx, ty = self.target_positions[piece_idx]
-        if abs(new_px - tx) <= 0.5 and abs(new_py - ty) <= 0.5:
-            self.piece_positions[piece_idx] = (tx, ty)
+        if new_px == tx and new_py == ty:
             self.locked[piece_idx] = True
 
         return "Success"
@@ -315,15 +303,10 @@ class EasyTangramGym(gym.Env):
             if self.inner.locked[piece_idx]:
                 mask[action] = False
                 continue
-            direction     = action % 4
-            dx, dy        = [(0, 1), (0, -1), (-1, 0), (1, 0)][direction]
-            px, py        = self.inner.piece_positions[piece_idx]
+            direction      = action % 4
+            dx, dy         = [(0, 1), (0, -1), (-1, 0), (1, 0)][direction]
+            px, py         = self.inner.piece_positions[piece_idx]
             new_px, new_py = px + dx, py + dy
             if not (0 <= new_px <= GRID_SIZE - 1 and 0 <= new_py <= GRID_SIZE - 1):
                 mask[action] = False
-                continue
-            for j, (qx, qy) in enumerate(self.inner.piece_positions):
-                if j != piece_idx and qx == new_px and qy == new_py:
-                    mask[action] = False
-                    break
         return mask

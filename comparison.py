@@ -131,7 +131,7 @@ def print_summary(reward_histories: dict, eval_scores: dict):
 
 # ── Entry points ──────────────────────────────────────────────────────────────
 
-def run_comparison(episodes: int = 1000):
+def run_comparison(episodes: int = 5000):
     print(f"\n{'─'*55}")
     print(f"  Easy Tangram  —  {episodes} rollouts per representation")
     print(f"{'─'*55}")
@@ -175,4 +175,4 @@ if __name__ == "__main__":
     elif "--quick" in sys.argv:
         run_quick()
     else:
-        run_comparison(episodes=1000)
+        run_comparison(episodes=10000)

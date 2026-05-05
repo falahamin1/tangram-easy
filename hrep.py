@@ -11,6 +11,8 @@ Run:
     python hrep.py
 """
 
+import os
+import glob
 import torch
 import torch.optim as optim
 import torch.nn.functional as F
@@ -22,9 +24,48 @@ from easy_env import EasyTangramGym
 from DeepSetRL import DeepSetActorCritic
 from PPOBuffer import PPOBuffer
 
+_KEEP = 3
 
-def train_h_rep(episodes: int = 1000):
-    # ── 1. Hyperparameters ────────────────────────────────────────────────────
+
+def _save_checkpoint(ckpt_dir, ep, model, opt,
+                     reward_history, best_moving_avg, best_weights):
+    os.makedirs(ckpt_dir, exist_ok=True)
+    path = os.path.join(ckpt_dir, f'checkpoint_ep{ep:07d}.pth')
+    tmp  = path + '.tmp'
+    torch.save({
+        'episode':              ep,
+        'model_state_dict':     model.state_dict(),
+        'optimizer_state_dict': opt.state_dict(),
+        'reward_history':       reward_history,
+        'best_moving_avg':      best_moving_avg,
+        'best_weights':         best_weights,
+    }, tmp)
+    os.replace(tmp, path)
+    torch.save(best_weights, os.path.join(ckpt_dir, 'hrep_best.pth'))
+    for f in sorted(glob.glob(os.path.join(ckpt_dir, 'checkpoint_ep*.pth')))[:-_KEEP]:
+        try:
+            os.remove(f)
+        except OSError:
+            pass
+    print(f"[H-rep] checkpoint saved → ep={ep}")
+
+
+def _load_latest_checkpoint(ckpt_dir, model, opt):
+    ckpts = sorted(glob.glob(os.path.join(ckpt_dir, 'checkpoint_ep*.pth')))
+    if not ckpts:
+        return 0, [], -float('inf'), None
+    latest = ckpts[-1]
+    print(f"[H-rep] Resuming from {latest}")
+    data = torch.load(latest, map_location='cpu')
+    model.load_state_dict(data['model_state_dict'])
+    opt.load_state_dict(data['optimizer_state_dict'])
+    return (data['episode'] + 1, data['reward_history'],
+            data['best_moving_avg'], data['best_weights'])
+
+
+def train_h_rep(episodes: int = 1000,
+                checkpoint_dir: str = 'checkpoints/hrep',
+                checkpoint_interval: int = 500):
     HP = {
         "lr"               : 1e-4,
         "clip_eps"         : 0.2,
@@ -35,36 +76,30 @@ def train_h_rep(episodes: int = 1000):
         "entropy_coef"     : 0.05,
         "critic_coef"      : 0.5,
         "max_grad_norm"    : 0.5,
-        "render_interval"  : 500,
         "moving_avg_window": 20,
     }
 
-    # ── 2. Initialisation ─────────────────────────────────────────────────────
     env    = EasyTangramGym()
-
-    # H-rep: 4 constraints × 3 params = 12 features per piece
     model  = DeepSetActorCritic(input_dim=12, num_pieces=4, num_actions=16)
     opt    = optim.Adam(model.parameters(), lr=HP["lr"])
     buffer = PPOBuffer(size=HP["steps_per_rollout"], state_shape=(4, 12))
 
-    reward_history   = []
-    best_moving_avg  = -float("inf")
-    best_weights     = deepcopy(model.state_dict())
+    start_ep, reward_history, best_moving_avg, loaded_best = \
+        _load_latest_checkpoint(checkpoint_dir, model, opt)
+    best_weights = loaded_best if loaded_best is not None else deepcopy(model.state_dict())
 
-    # ── 3. Training loop ──────────────────────────────────────────────────────
-    for ep in range(episodes):
-        obs      = env.reset()
+    print(f"[H-rep] episodes={episodes}  start_ep={start_ep}  ckpt_dir={checkpoint_dir}")
+
+    for ep in range(start_ep, episodes):
+        obs       = env.reset()
         ep_reward = 0
 
-        # Rollout collection
         for t in range(HP["steps_per_rollout"]):
-            # Flatten H-rep: [4, 4, 3] → [4, 12]
-            raw     = torch.tensor(obs["h_rep"], dtype=torch.float32)
-            state_f = raw.view(4, 12)
-            state_in = state_f.unsqueeze(0)   # [1, 4, 12]
+            raw      = torch.tensor(obs["h_rep"], dtype=torch.float32)
+            state_f  = raw.view(4, 12)
+            state_in = state_f.unsqueeze(0)
 
-            mask    = env.get_action_mask()
-            mask_ts = torch.tensor(mask, dtype=torch.bool)
+            mask_ts = torch.tensor(env.get_action_mask(), dtype=torch.bool)
 
             with torch.no_grad():
                 logits, value = model(state_in)
@@ -85,10 +120,10 @@ def train_h_rep(episodes: int = 1000):
                 ep_reward = 0
             elif t == HP["steps_per_rollout"] - 1:
                 raw_next = torch.tensor(obs["h_rep"], dtype=torch.float32)
-                _, last_val = model(raw_next.view(4, 12).unsqueeze(0))
+                with torch.no_grad():
+                    _, last_val = model(raw_next.view(4, 12).unsqueeze(0))
                 buffer.finish_path(last_val.item())
 
-        # Best-model tracking
         if len(reward_history) >= HP["moving_avg_window"]:
             avg = np.mean(reward_history[-HP["moving_avg_window"]:])
             if avg > best_moving_avg:
@@ -96,7 +131,6 @@ def train_h_rep(episodes: int = 1000):
                 best_weights    = deepcopy(model.state_dict())
                 print(f"*** NEW BEST H-REP  (avg={best_moving_avg:.2f}) at rollout {ep} ***")
 
-        # PPO update
         data    = buffer.get()
         indices = np.arange(HP["steps_per_rollout"])
         for _ in range(HP["ppo_epochs"]):
@@ -128,16 +162,19 @@ def train_h_rep(episodes: int = 1000):
 
         buffer.clear()
 
-        # Logging & renders
         if ep % 100 == 0:
             avg = np.mean(reward_history[-10:]) if reward_history else 0
-            print(f"H-Rep rollout {ep:4d} | recent={avg:.2f} | best={best_moving_avg:.2f}")
+            print(f"H-Rep rollout {ep:5d} | recent={avg:.2f} | best={best_moving_avg:.2f}")
 
-        if ep % HP["render_interval"] == 0:
-            env.inner.render(f"H-Rep_Easy_Ep_{ep}")
+        if checkpoint_interval > 0 and ep > 0 and ep % checkpoint_interval == 0:
+            _save_checkpoint(checkpoint_dir, ep, model, opt,
+                             reward_history, best_moving_avg, best_weights)
 
-    # ── 4. Save ───────────────────────────────────────────────────────────────
-    torch.save(model.state_dict(), "model_h_rep_easy_final.pth")
+    os.makedirs(checkpoint_dir, exist_ok=True)
+    torch.save(model.state_dict(), os.path.join(checkpoint_dir, 'hrep_final.pth'))
+    _save_checkpoint(checkpoint_dir, episodes - 1, model, opt,
+                     reward_history, best_moving_avg, best_weights)
+    print(f"[H-rep] Done. Models saved to {checkpoint_dir}/")
 
     best_model = DeepSetActorCritic(input_dim=12, num_pieces=4, num_actions=16)
     best_model.load_state_dict(best_weights)
