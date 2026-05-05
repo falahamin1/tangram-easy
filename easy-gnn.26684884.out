@@ -1,0 +1,270 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[GNN] episodes=20000  start_ep=0  ckpt_dir=checkpoints/gnn
+GNN    rollout     0 | recent=-0.39 | best=-inf
+*** NEW BEST GNN    (avg=3.13) at rollout 6 ***
+*** NEW BEST GNN    (avg=3.88) at rollout 7 ***
+GNN    rollout   100 | recent=-0.51 | best=3.88
+*** NEW BEST GNN    (avg=5.09) at rollout 137 ***
+*** NEW BEST GNN    (avg=5.19) at rollout 138 ***
+GNN    rollout   200 | recent=-0.44 | best=5.19
+*** NEW BEST GNN    (avg=5.42) at rollout 239 ***
+*** NEW BEST GNN    (avg=5.61) at rollout 266 ***
+*** NEW BEST GNN    (avg=6.14) at rollout 267 ***
+GNN    rollout   300 | recent=2.22 | best=6.14
+GNN    rollout   400 | recent=-0.42 | best=6.14
+GNN    rollout   500 | recent=3.97 | best=6.14
+[GNN] checkpoint saved → ep=500
+GNN    rollout   600 | recent=0.94 | best=6.14
+GNN    rollout   700 | recent=6.30 | best=6.14
+*** NEW BEST GNN    (avg=6.17) at rollout 702 ***
+*** NEW BEST GNN    (avg=6.49) at rollout 725 ***
+*** NEW BEST GNN    (avg=7.68) at rollout 794 ***
+GNN    rollout   800 | recent=1.96 | best=7.68
+GNN    rollout   900 | recent=5.14 | best=7.68
+*** NEW BEST GNN    (avg=8.11) at rollout 945 ***
+GNN    rollout  1000 | recent=1.32 | best=8.11
+[GNN] checkpoint saved → ep=1000
+*** NEW BEST GNN    (avg=9.32) at rollout 1061 ***
+*** NEW BEST GNN    (avg=10.65) at rollout 1062 ***
+GNN    rollout  1100 | recent=3.73 | best=10.65
+GNN    rollout  1200 | recent=4.03 | best=10.65
+GNN    rollout  1300 | recent=7.88 | best=10.65
+GNN    rollout  1400 | recent=5.27 | best=10.65
+GNN    rollout  1500 | recent=5.11 | best=10.65
+[GNN] checkpoint saved → ep=1500
+GNN    rollout  1600 | recent=6.37 | best=10.65
+GNN    rollout  1700 | recent=0.82 | best=10.65
+GNN    rollout  1800 | recent=6.25 | best=10.65
+GNN    rollout  1900 | recent=7.88 | best=10.65
+*** NEW BEST GNN    (avg=10.83) at rollout 1931 ***
+GNN    rollout  2000 | recent=6.58 | best=10.83
+[GNN] checkpoint saved → ep=2000
+*** NEW BEST GNN    (avg=10.95) at rollout 2074 ***
+*** NEW BEST GNN    (avg=11.15) at rollout 2079 ***
+GNN    rollout  2100 | recent=5.18 | best=11.15
+GNN    rollout  2200 | recent=6.57 | best=11.15
+GNN    rollout  2300 | recent=3.95 | best=11.15
+*** NEW BEST GNN    (avg=11.33) at rollout 2318 ***
+GNN    rollout  2400 | recent=6.30 | best=11.33
+*** NEW BEST GNN    (avg=12.17) at rollout 2445 ***
+GNN    rollout  2500 | recent=10.60 | best=12.17
+[GNN] checkpoint saved → ep=2500
+GNN    rollout  2600 | recent=8.03 | best=12.17
+GNN    rollout  2700 | recent=6.43 | best=12.17
+GNN    rollout  2800 | recent=6.82 | best=12.17
+GNN    rollout  2900 | recent=6.59 | best=12.17
+GNN    rollout  3000 | recent=5.40 | best=12.17
+[GNN] checkpoint saved → ep=3000
+GNN    rollout  3100 | recent=10.40 | best=12.17
+GNN    rollout  3200 | recent=2.07 | best=12.17
+GNN    rollout  3300 | recent=10.48 | best=12.17
+GNN    rollout  3400 | recent=9.32 | best=12.17
+GNN    rollout  3500 | recent=9.19 | best=12.17
+[GNN] checkpoint saved → ep=3500
+GNN    rollout  3600 | recent=5.06 | best=12.17
+GNN    rollout  3700 | recent=5.28 | best=12.17
+GNN    rollout  3800 | recent=7.81 | best=12.17
+GNN    rollout  3900 | recent=12.23 | best=12.17
+GNN    rollout  4000 | recent=2.85 | best=12.17
+[GNN] checkpoint saved → ep=4000
+GNN    rollout  4100 | recent=3.75 | best=12.17
+*** NEW BEST GNN    (avg=12.22) at rollout 4198 ***
+GNN    rollout  4200 | recent=9.49 | best=12.22
+*** NEW BEST GNN    (avg=12.26) at rollout 4212 ***
+*** NEW BEST GNN    (avg=12.97) at rollout 4213 ***
+GNN    rollout  4300 | recent=11.06 | best=12.97
+GNN    rollout  4400 | recent=9.41 | best=12.97
+GNN    rollout  4500 | recent=9.38 | best=12.97
+[GNN] checkpoint saved → ep=4500
+GNN    rollout  4600 | recent=9.51 | best=12.97
+GNN    rollout  4700 | recent=7.74 | best=12.97
+GNN    rollout  4800 | recent=6.91 | best=12.97
+GNN    rollout  4900 | recent=8.05 | best=12.97
+GNN    rollout  5000 | recent=13.47 | best=12.97
+[GNN] checkpoint saved → ep=5000
+GNN    rollout  5100 | recent=12.05 | best=12.97
+GNN    rollout  5200 | recent=6.12 | best=12.97
+GNN    rollout  5300 | recent=5.05 | best=12.97
+GNN    rollout  5400 | recent=6.41 | best=12.97
+GNN    rollout  5500 | recent=10.44 | best=12.97
+[GNN] checkpoint saved → ep=5500
+GNN    rollout  5600 | recent=9.14 | best=12.97
+*** NEW BEST GNN    (avg=13.18) at rollout 5652 ***
+GNN    rollout  5700 | recent=9.50 | best=13.18
+GNN    rollout  5800 | recent=7.92 | best=13.18
+GNN    rollout  5900 | recent=9.16 | best=13.18
+GNN    rollout  6000 | recent=8.11 | best=13.18
+[GNN] checkpoint saved → ep=6000
+GNN    rollout  6100 | recent=9.27 | best=13.18
+GNN    rollout  6200 | recent=9.41 | best=13.18
+GNN    rollout  6300 | recent=12.30 | best=13.18
+*** NEW BEST GNN    (avg=13.65) at rollout 6352 ***
+GNN    rollout  6400 | recent=5.24 | best=13.65
+GNN    rollout  6500 | recent=6.90 | best=13.65
+[GNN] checkpoint saved → ep=6500
+GNN    rollout  6600 | recent=9.72 | best=13.65
+GNN    rollout  6700 | recent=7.90 | best=13.65
+GNN    rollout  6800 | recent=7.12 | best=13.65
+GNN    rollout  6900 | recent=9.28 | best=13.65
+*** NEW BEST GNN    (avg=13.83) at rollout 6991 ***
+GNN    rollout  7000 | recent=6.97 | best=13.83
+[GNN] checkpoint saved → ep=7000
+GNN    rollout  7100 | recent=9.45 | best=13.83
+GNN    rollout  7200 | recent=9.38 | best=13.83
+GNN    rollout  7300 | recent=7.79 | best=13.83
+GNN    rollout  7400 | recent=9.65 | best=13.83
+GNN    rollout  7500 | recent=4.66 | best=13.83
+[GNN] checkpoint saved → ep=7500
+GNN    rollout  7600 | recent=12.24 | best=13.83
+GNN    rollout  7700 | recent=9.32 | best=13.83
+GNN    rollout  7800 | recent=9.26 | best=13.83
+GNN    rollout  7900 | recent=10.89 | best=13.83
+GNN    rollout  8000 | recent=7.87 | best=13.83
+[GNN] checkpoint saved → ep=8000
+GNN    rollout  8100 | recent=5.04 | best=13.83
+GNN    rollout  8200 | recent=8.12 | best=13.83
+GNN    rollout  8300 | recent=10.87 | best=13.83
+GNN    rollout  8400 | recent=9.48 | best=13.83
+GNN    rollout  8500 | recent=6.43 | best=13.83
+[GNN] checkpoint saved → ep=8500
+GNN    rollout  8600 | recent=6.63 | best=13.83
+GNN    rollout  8700 | recent=8.01 | best=13.83
+GNN    rollout  8800 | recent=8.16 | best=13.83
+GNN    rollout  8900 | recent=5.43 | best=13.83
+GNN    rollout  9000 | recent=9.32 | best=13.83
+[GNN] checkpoint saved → ep=9000
+GNN    rollout  9100 | recent=6.50 | best=13.83
+GNN    rollout  9200 | recent=9.32 | best=13.83
+GNN    rollout  9300 | recent=8.21 | best=13.83
+GNN    rollout  9400 | recent=8.05 | best=13.83
+GNN    rollout  9500 | recent=10.67 | best=13.83
+[GNN] checkpoint saved → ep=9500
+GNN    rollout  9600 | recent=6.77 | best=13.83
+GNN    rollout  9700 | recent=10.32 | best=13.83
+GNN    rollout  9800 | recent=8.33 | best=13.83
+GNN    rollout  9900 | recent=9.24 | best=13.83
+GNN    rollout 10000 | recent=6.50 | best=13.83
+[GNN] checkpoint saved → ep=10000
+GNN    rollout 10100 | recent=7.86 | best=13.83
+GNN    rollout 10200 | recent=9.33 | best=13.83
+GNN    rollout 10300 | recent=7.98 | best=13.83
+GNN    rollout 10400 | recent=12.32 | best=13.83
+GNN    rollout 10500 | recent=12.19 | best=13.83
+[GNN] checkpoint saved → ep=10500
+GNN    rollout 10600 | recent=8.40 | best=13.83
+GNN    rollout 10700 | recent=12.31 | best=13.83
+GNN    rollout 10800 | recent=9.48 | best=13.83
+GNN    rollout 10900 | recent=12.16 | best=13.83
+GNN    rollout 11000 | recent=9.53 | best=13.83
+[GNN] checkpoint saved → ep=11000
+GNN    rollout 11100 | recent=6.48 | best=13.83
+GNN    rollout 11200 | recent=7.93 | best=13.83
+GNN    rollout 11300 | recent=10.59 | best=13.83
+GNN    rollout 11400 | recent=10.73 | best=13.83
+GNN    rollout 11500 | recent=6.61 | best=13.83
+[GNN] checkpoint saved → ep=11500
+GNN    rollout 11600 | recent=12.09 | best=13.83
+GNN    rollout 11700 | recent=7.97 | best=13.83
+GNN    rollout 11800 | recent=5.39 | best=13.83
+GNN    rollout 11900 | recent=5.31 | best=13.83
+GNN    rollout 12000 | recent=11.17 | best=13.83
+[GNN] checkpoint saved → ep=12000
+GNN    rollout 12100 | recent=5.60 | best=13.83
+GNN    rollout 12200 | recent=1.03 | best=13.83
+GNN    rollout 12300 | recent=3.53 | best=13.83
+GNN    rollout 12400 | recent=6.37 | best=13.83
+GNN    rollout 12500 | recent=5.01 | best=13.83
+[GNN] checkpoint saved → ep=12500
+GNN    rollout 12600 | recent=9.28 | best=13.83
+GNN    rollout 12700 | recent=5.25 | best=13.83
+GNN    rollout 12800 | recent=7.65 | best=13.83
+GNN    rollout 12900 | recent=6.34 | best=13.83
+GNN    rollout 13000 | recent=4.94 | best=13.83
+[GNN] checkpoint saved → ep=13000
+GNN    rollout 13100 | recent=7.72 | best=13.83
+GNN    rollout 13200 | recent=7.93 | best=13.83
+GNN    rollout 13300 | recent=5.36 | best=13.83
+GNN    rollout 13400 | recent=3.65 | best=13.83
+GNN    rollout 13500 | recent=9.24 | best=13.83
+[GNN] checkpoint saved → ep=13500
+GNN    rollout 13600 | recent=10.83 | best=13.83
+GNN    rollout 13700 | recent=2.39 | best=13.83
+GNN    rollout 13800 | recent=5.36 | best=13.83
+GNN    rollout 13900 | recent=6.62 | best=13.83
+GNN    rollout 14000 | recent=4.99 | best=13.83
+[GNN] checkpoint saved → ep=14000
+GNN    rollout 14100 | recent=6.59 | best=13.83
+GNN    rollout 14200 | recent=6.75 | best=13.83
+GNN    rollout 14300 | recent=6.84 | best=13.83
+GNN    rollout 14400 | recent=3.14 | best=13.83
+GNN    rollout 14500 | recent=9.26 | best=13.83
+[GNN] checkpoint saved → ep=14500
+GNN    rollout 14600 | recent=7.99 | best=13.83
+GNN    rollout 14700 | recent=6.65 | best=13.83
+GNN    rollout 14800 | recent=5.09 | best=13.83
+GNN    rollout 14900 | recent=7.98 | best=13.83
+GNN    rollout 15000 | recent=9.26 | best=13.83
+[GNN] checkpoint saved → ep=15000
+GNN    rollout 15100 | recent=9.70 | best=13.83
+GNN    rollout 15200 | recent=2.28 | best=13.83
+GNN    rollout 15300 | recent=10.98 | best=13.83
+GNN    rollout 15400 | recent=6.67 | best=13.83
+GNN    rollout 15500 | recent=5.02 | best=13.83
+[GNN] checkpoint saved → ep=15500
+GNN    rollout 15600 | recent=10.86 | best=13.83
+GNN    rollout 15700 | recent=8.10 | best=13.83
+GNN    rollout 15800 | recent=8.03 | best=13.83
+GNN    rollout 15900 | recent=6.56 | best=13.83
+GNN    rollout 16000 | recent=8.35 | best=13.83
+[GNN] checkpoint saved → ep=16000
+GNN    rollout 16100 | recent=12.17 | best=13.83
+GNN    rollout 16200 | recent=5.11 | best=13.83
+GNN    rollout 16300 | recent=10.95 | best=13.83
+GNN    rollout 16400 | recent=8.14 | best=13.83
+GNN    rollout 16500 | recent=12.11 | best=13.83
+[GNN] checkpoint saved → ep=16500
+GNN    rollout 16600 | recent=5.77 | best=13.83
+GNN    rollout 16700 | recent=8.35 | best=13.83
+GNN    rollout 16800 | recent=7.97 | best=13.83
+GNN    rollout 16900 | recent=9.53 | best=13.83
+GNN    rollout 17000 | recent=10.83 | best=13.83
+[GNN] checkpoint saved → ep=17000
+GNN    rollout 17100 | recent=13.98 | best=13.83
+GNN    rollout 17200 | recent=9.56 | best=13.83
+GNN    rollout 17300 | recent=6.76 | best=13.83
+GNN    rollout 17400 | recent=6.33 | best=13.83
+GNN    rollout 17500 | recent=9.48 | best=13.83
+[GNN] checkpoint saved → ep=17500
+GNN    rollout 17600 | recent=12.11 | best=13.83
+GNN    rollout 17700 | recent=8.01 | best=13.83
+GNN    rollout 17800 | recent=4.98 | best=13.83
+GNN    rollout 17900 | recent=6.62 | best=13.83
+GNN    rollout 18000 | recent=4.14 | best=13.83
+[GNN] checkpoint saved → ep=18000
+GNN    rollout 18100 | recent=10.65 | best=13.83
+GNN    rollout 18200 | recent=10.81 | best=13.83
+GNN    rollout 18300 | recent=7.99 | best=13.83
+GNN    rollout 18400 | recent=7.97 | best=13.83
+GNN    rollout 18500 | recent=5.85 | best=13.83
+[GNN] checkpoint saved → ep=18500
+GNN    rollout 18600 | recent=6.32 | best=13.83
+GNN    rollout 18700 | recent=9.07 | best=13.83
+GNN    rollout 18800 | recent=11.01 | best=13.83
+GNN    rollout 18900 | recent=8.26 | best=13.83
+GNN    rollout 19000 | recent=10.97 | best=13.83
+[GNN] checkpoint saved → ep=19000
+GNN    rollout 19100 | recent=7.97 | best=13.83
+GNN    rollout 19200 | recent=9.57 | best=13.83
+GNN    rollout 19300 | recent=9.76 | best=13.83
+GNN    rollout 19400 | recent=9.60 | best=13.83
+GNN    rollout 19500 | recent=10.62 | best=13.83
+[GNN] checkpoint saved → ep=19500
+GNN    rollout 19600 | recent=6.49 | best=13.83
+GNN    rollout 19700 | recent=7.80 | best=13.83
+GNN    rollout 19800 | recent=9.54 | best=13.83
+GNN    rollout 19900 | recent=9.70 | best=13.83
+[GNN] checkpoint saved → ep=19999
+[GNN] Done. Models saved to checkpoints/gnn/
