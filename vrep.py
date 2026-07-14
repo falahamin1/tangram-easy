@@ -13,6 +13,7 @@ Run:
 
 import os
 import glob
+import random
 import torch
 import torch.optim as optim
 import torch.nn.functional as F
@@ -65,7 +66,12 @@ def _load_latest_checkpoint(ckpt_dir, model, opt):
 
 def train_v_rep(episodes: int = 1000,
                 checkpoint_dir: str = 'checkpoints/vrep',
-                checkpoint_interval: int = 500):
+                checkpoint_interval: int = 500,
+                seed: int = 0):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+
     HP = {
         "lr"               : 3e-4,
         "clip_eps"         : 0.2,

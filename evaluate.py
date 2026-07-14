@@ -14,9 +14,13 @@ import torch
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(__file__))
-from easy_env import EasyTangramGym
+from easy_env import EasyTangramGym, FLAT_POSE_DIM, GRID_CHANNELS
 from DeepSetRL import DeepSetActorCritic
 from GraphNNRL import GNNActorCritic
+from MLPRL import MLPActorCritic
+from CNNRL import CNNActorCritic
+
+NUM_ACTIONS = 16
 
 CHECKPOINT_DIR = os.path.join(os.path.dirname(__file__), 'checkpoints')
 RENDER_DIR     = os.path.join(os.path.dirname(__file__), 'eval_renders')
@@ -29,9 +33,15 @@ def load_model(method, checkpoint_dir):
     elif method == 'vrep':
         model = DeepSetActorCritic(input_dim=8, num_pieces=4, num_actions=16)
         path  = os.path.join(checkpoint_dir, 'vrep', 'vrep_best.pth')
-    else:  # gnn
+    elif method == 'gnn':
         model = GNNActorCritic(node_dim=3, hidden_dim=128, num_actions=16)
         path  = os.path.join(checkpoint_dir, 'gnn', 'gnn_best.pth')
+    elif method == 'mlp':
+        model = MLPActorCritic(input_dim=FLAT_POSE_DIM, num_actions=NUM_ACTIONS)
+        path  = os.path.join(checkpoint_dir, 'mlp', 'mlp_best.pth')
+    else:  # cnn
+        model = CNNActorCritic(in_channels=GRID_CHANNELS, num_actions=NUM_ACTIONS)
+        path  = os.path.join(checkpoint_dir, 'cnn', 'cnn_best.pth')
 
     if not os.path.exists(path):
         print(f"  [SKIP] checkpoint not found: {path}")
@@ -51,10 +61,16 @@ def get_action(model, method, obs, mask):
         elif method == 'vrep':
             state = torch.tensor(obs['v_rep'], dtype=torch.float32).view(1, 4, 8)
             logits, _ = model(state)
-        else:  # gnn
+        elif method == 'gnn':
             h   = torch.tensor(obs['h_rep'], dtype=torch.float32).unsqueeze(0)
             adj = torch.tensor(obs['adj'],   dtype=torch.float32).unsqueeze(0)
             logits, _ = model(h, adj)
+        elif method == 'mlp':
+            state = torch.tensor(obs['flat_pose'], dtype=torch.float32).unsqueeze(0)
+            logits, _ = model(state)
+        else:  # cnn
+            state = torch.tensor(obs['grid_image'], dtype=torch.float32).unsqueeze(0)
+            logits, _ = model(state)
         logits[0][~mask_ts] = -1e10
         return torch.argmax(logits, dim=-1).item()
 
@@ -100,12 +116,12 @@ def evaluate_method(method, checkpoint_dir):
 
 def main():
     ap = argparse.ArgumentParser(description='Evaluate saved easy-tangram policies')
-    ap.add_argument('--method', choices=['hrep', 'vrep', 'gnn', 'all'], default='all')
+    ap.add_argument('--method', choices=['hrep', 'vrep', 'gnn', 'mlp', 'cnn', 'all'], default='all')
     ap.add_argument('--checkpoint-dir',
                     default=os.path.join(os.path.dirname(__file__), 'checkpoints'))
     args = ap.parse_args()
 
-    methods = ['hrep', 'vrep', 'gnn'] if args.method == 'all' else [args.method]
+    methods = ['hrep', 'vrep', 'gnn', 'mlp', 'cnn'] if args.method == 'all' else [args.method]
     for m in methods:
         evaluate_method(m, args.checkpoint_dir)
 

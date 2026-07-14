@@ -37,6 +37,22 @@ GRID_SIZE = 10     # board is GRID_SIZE × GRID_SIZE cells
 BOARD_MAX = 11.0   # b-value normalisation constant (mirrors hard tangram)
 MAX_STEPS = 300
 
+# Baseline-encoder constants (flat MLP / CNN strawmen — see MLPRL.py / CNNRL.py)
+NUM_PIECES     = 4
+POSE_DIM       = 6                       # per piece: cx, cy, shape_id, orient_id, target_dx, target_dy
+FLAT_POSE_DIM  = NUM_PIECES * POSE_DIM   # 24
+GRID           = GRID_SIZE               # occupancy grid side; easy board coords are exactly [0, GRID_SIZE-1]
+GRID_CHANNELS  = 2 * NUM_PIECES + 1      # per-piece occupancy + per-piece target + locked mask
+
+
+def _cell_in_poly(poly, cx, cy, X, Y):
+    """True if the point (cx, cy) satisfies every minimized constraint of poly."""
+    for c in poly.minimized_constraints():
+        val = float(c.coefficient(X)) * cx + float(c.coefficient(Y)) * cy + float(c.inhomogeneous_term())
+        if val < 0:
+            return False
+    return True
+
 
 # ── Inner physics / geometry layer ────────────────────────────────────────────
 
@@ -79,6 +95,9 @@ class EasyTangramEnv:
         g = GRID_SIZE - 1
         self.piece_positions = [(0, 0), (g, 0), (0, g), (g, g)]
         self.locked          = [False] * 4
+        # Static per-piece metadata for the flat-MLP baseline — easy is all unit squares.
+        self.piece_shape_id       = [0, 0, 0, 0]
+        self.piece_orientation_id = [0, 0, 0, 0]
 
     def get_pieces(self):
         """Rebuild PPL polyhedra from current grid positions (called per step)."""
@@ -161,7 +180,10 @@ class EasyTangramGym(gym.Env):
             "h_rep": spaces.Box(low=-1, high=1, shape=(4, 4, 3), dtype=np.float32),
             "v_rep": spaces.Box(low=0,  high=1, shape=(4, 4, 2), dtype=np.float32),
             "adj"  : spaces.Box(low=0,  high=1, shape=(4, 4, 4), dtype=np.float32),
+            "flat_pose"  : spaces.Box(low=-1, high=1, shape=(FLAT_POSE_DIM,), dtype=np.float32),
+            "grid_image" : spaces.Box(low=0,  high=1, shape=(GRID_CHANNELS, GRID, GRID), dtype=np.float32),
         })
+        self._target_channels = self._rasterize_targets()
 
     # ── Observation extraction ────────────────────────────────────────────────
     def _get_obs(self):
@@ -169,7 +191,53 @@ class EasyTangramGym(gym.Env):
             "h_rep": self._extract_h_rep(),
             "v_rep": self._extract_v_rep(),
             "adj"  : self._build_graph_adj(),
+            "flat_pose"  : self._extract_flat_pose(),
+            "grid_image" : self._extract_grid_image(),
         }
+
+    # ── Flat-MLP baseline observation ─────────────────────────────────────────
+    def _extract_flat_pose(self):
+        """Per-piece [cx, cy, shape_id, orientation_id, target_dx, target_dy], flattened."""
+        pieces = self.inner.get_pieces()
+        pose = []
+        for i, piece in enumerate(pieces):
+            c  = self.inner._centroid(piece)
+            tc = self.inner.target_centroids[i]
+            pose.extend([
+                c[0] / BOARD_MAX,
+                c[1] / BOARD_MAX,
+                float(self.inner.piece_shape_id[i]),
+                self.inner.piece_orientation_id[i] / 4.0,
+                (tc[0] - c[0]) / BOARD_MAX,
+                (tc[1] - c[1]) / BOARD_MAX,
+            ])
+        return np.array(pose, dtype=np.float32)
+
+    # ── CNN baseline observation ──────────────────────────────────────────────
+    def _rasterize(self, poly):
+        """Boolean occupancy grid [GRID, GRID] for a single PPL polyhedron."""
+        X, Y = self.inner.x, self.inner.y
+        grid = np.zeros((GRID, GRID), dtype=np.float32)
+        for i in range(GRID):
+            for j in range(GRID):
+                if _cell_in_poly(poly, i + 0.5, j + 0.5, X, Y):
+                    grid[i, j] = 1.0
+        return grid
+
+    def _rasterize_targets(self):
+        """Target-silhouette channels are static — computed once and cached."""
+        return np.stack([self._rasterize(tp) for tp in self.inner.target_pieces])
+
+    def _extract_grid_image(self):
+        n = self.num_pieces
+        img = np.zeros((GRID_CHANNELS, GRID, GRID), dtype=np.float32)
+        for i, piece in enumerate(self.inner.get_pieces()):
+            img[i] = self._rasterize(piece)
+        img[n:2 * n] = self._target_channels
+        for i in range(n):
+            if self.inner.locked[i]:
+                img[2 * n] = np.maximum(img[2 * n], img[i])
+        return img
 
     def _extract_h_rep(self):
         """
