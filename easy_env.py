@@ -44,14 +44,10 @@ FLAT_POSE_DIM  = NUM_PIECES * POSE_DIM   # 24
 GRID           = GRID_SIZE               # occupancy grid side; easy board coords are exactly [0, GRID_SIZE-1]
 GRID_CHANNELS  = 2 * NUM_PIECES + 1      # per-piece occupancy + per-piece target + locked mask
 
-
-def _cell_in_poly(poly, cx, cy, X, Y):
-    """True if the point (cx, cy) satisfies every minimized constraint of poly."""
-    for c in poly.minimized_constraints():
-        val = float(c.coefficient(X)) * cx + float(c.coefficient(Y)) * cy + float(c.inhomogeneous_term())
-        if val < 0:
-            return False
-    return True
+# Cached cell-center coordinates for vectorized rasterization (avoids a
+# per-cell, per-constraint PPL call — that O(GRID^2 * constraints) Python
+# loop is the dominant cost of computing grid_image on every env step).
+_CX, _CY = np.meshgrid(np.arange(GRID) + 0.5, np.arange(GRID) + 0.5, indexing='ij')
 
 
 # ── Inner physics / geometry layer ────────────────────────────────────────────
@@ -215,14 +211,19 @@ class EasyTangramGym(gym.Env):
 
     # ── CNN baseline observation ──────────────────────────────────────────────
     def _rasterize(self, poly):
-        """Boolean occupancy grid [GRID, GRID] for a single PPL polyhedron."""
+        """Boolean occupancy grid [GRID, GRID] for a single PPL polyhedron.
+
+        Vectorized: each constraint's PPL coefficients are read once, then
+        evaluated over the whole cell-center grid with numpy — not per cell.
+        """
         X, Y = self.inner.x, self.inner.y
-        grid = np.zeros((GRID, GRID), dtype=np.float32)
-        for i in range(GRID):
-            for j in range(GRID):
-                if _cell_in_poly(poly, i + 0.5, j + 0.5, X, Y):
-                    grid[i, j] = 1.0
-        return grid
+        mask = np.ones((GRID, GRID), dtype=bool)
+        for c in poly.minimized_constraints():
+            a1 = float(c.coefficient(X))
+            a2 = float(c.coefficient(Y))
+            b  = float(c.inhomogeneous_term())
+            mask &= (a1 * _CX + a2 * _CY + b >= 0)
+        return mask.astype(np.float32)
 
     def _rasterize_targets(self):
         """Target-silhouette channels are static — computed once and cached."""

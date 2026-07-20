@@ -112,12 +112,16 @@ def main():
           f"episodes={args.episodes}  ckpt_dir={ckpt_dir}")
 
     t0 = time.time()
-    _, best_model = TRAIN[args.method](
+    # Some train_* functions return (model, best_model), others return
+    # (model, best_model, reward_history) — index rather than unpack so
+    # either arity works.
+    result = TRAIN[args.method](
         episodes=args.episodes,
         checkpoint_dir=ckpt_dir,
         checkpoint_interval=args.checkpoint_interval,
         seed=args.seed,
     )
+    best_model = result[1]
     elapsed = time.time() - t0
 
     print(f"\n[train_single] Training done in {elapsed/60:.1f} min. Evaluating ...")
