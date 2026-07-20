@@ -1,0 +1,23 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[train_single] method=hrep  seed=0  episodes=20000  ckpt_dir=/projects/amfa5003/tangram-easy/checkpoints/hrep
+[H-rep] Resuming from /projects/amfa5003/tangram-easy/checkpoints/hrep/checkpoint_ep0019999.pth
+Traceback (most recent call last):
+  File "/projects/amfa5003/tangram-easy/train_single.py", line 141, in <module>
+    main()
+  File "/projects/amfa5003/tangram-easy/train_single.py", line 115, in main
+    _, best_model = TRAIN[args.method](
+  File "/projects/amfa5003/tangram-easy/hrep.py", line 94, in train_h_rep
+    _load_latest_checkpoint(checkpoint_dir, model, opt)
+  File "/projects/amfa5003/tangram-easy/hrep.py", line 60, in _load_latest_checkpoint
+    data = torch.load(latest, map_location='cpu')
+  File "/projects/amfa5003/software/anaconda/envs/amfa-custom-env/lib/python3.10/site-packages/torch/serialization.py", line 1578, in load
+    raise pickle.UnpicklingError(_get_wo_message(str(e))) from None
+_pickle.UnpicklingError: Weights only load failed. This file can still be loaded, to do so you have two options, [1mdo those steps only if you trust the source of the checkpoint[0m. 
+	(1) In PyTorch 2.6, we changed the default value of the `weights_only` argument in `torch.load` from `False` to `True`. Re-running `torch.load` with `weights_only` set to `False` will likely succeed, but it can result in arbitrary code execution. Do it only if you got the file from a trusted source.
+	(2) Alternatively, to load with `weights_only=True` please check the recommended steps in the following error message.
+	WeightsUnpickler error: Unsupported global: GLOBAL numpy._core.multiarray.scalar was not an allowed global by default. Please use `torch.serialization.add_safe_globals([numpy._core.multiarray.scalar])` or the `torch.serialization.safe_globals([numpy._core.multiarray.scalar])` context manager to allowlist this global if you trust this class/function.
+
+Check the documentation of torch.load to learn more about types accepted by default with weights_only https://pytorch.org/docs/stable/generated/torch.load.html.

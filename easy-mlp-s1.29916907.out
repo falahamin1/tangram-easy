@@ -1,0 +1,307 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[train_single] method=mlp  seed=1  episodes=20000  ckpt_dir=/projects/amfa5003/tangram-easy/checkpoints/mlp/seed1
+[MLP] episodes=20000  start_ep=0  ckpt_dir=/projects/amfa5003/tangram-easy/checkpoints/mlp/seed1  seed=1
+MLP Ep 0 | Recent Avg: -0.04 | Best Avg: -inf
+*** NEW BEST MLP MODEL (Avg: 1.38) at Ep 6 ***
+*** NEW BEST MLP MODEL (Avg: 2.08) at Ep 7 ***
+*** NEW BEST MLP MODEL (Avg: 3.17) at Ep 10 ***
+*** NEW BEST MLP MODEL (Avg: 3.84) at Ep 11 ***
+*** NEW BEST MLP MODEL (Avg: 5.24) at Ep 12 ***
+*** NEW BEST MLP MODEL (Avg: 6.69) at Ep 13 ***
+*** NEW BEST MLP MODEL (Avg: 6.73) at Ep 14 ***
+*** NEW BEST MLP MODEL (Avg: 6.84) at Ep 15 ***
+*** NEW BEST MLP MODEL (Avg: 8.81) at Ep 16 ***
+*** NEW BEST MLP MODEL (Avg: 9.40) at Ep 19 ***
+*** NEW BEST MLP MODEL (Avg: 9.96) at Ep 22 ***
+*** NEW BEST MLP MODEL (Avg: 12.25) at Ep 23 ***
+*** NEW BEST MLP MODEL (Avg: 12.90) at Ep 24 ***
+*** NEW BEST MLP MODEL (Avg: 13.70) at Ep 30 ***
+*** NEW BEST MLP MODEL (Avg: 13.82) at Ep 34 ***
+*** NEW BEST MLP MODEL (Avg: 13.88) at Ep 35 ***
+*** NEW BEST MLP MODEL (Avg: 13.96) at Ep 38 ***
+*** NEW BEST MLP MODEL (Avg: 13.98) at Ep 44 ***
+*** NEW BEST MLP MODEL (Avg: 14.00) at Ep 45 ***
+*** NEW BEST MLP MODEL (Avg: 14.00) at Ep 46 ***
+*** NEW BEST MLP MODEL (Avg: 14.05) at Ep 48 ***
+*** NEW BEST MLP MODEL (Avg: 14.10) at Ep 49 ***
+*** NEW BEST MLP MODEL (Avg: 14.18) at Ep 52 ***
+*** NEW BEST MLP MODEL (Avg: 14.19) at Ep 57 ***
+*** NEW BEST MLP MODEL (Avg: 14.21) at Ep 60 ***
+*** NEW BEST MLP MODEL (Avg: 14.21) at Ep 66 ***
+*** NEW BEST MLP MODEL (Avg: 14.26) at Ep 69 ***
+*** NEW BEST MLP MODEL (Avg: 14.26) at Ep 76 ***
+*** NEW BEST MLP MODEL (Avg: 14.28) at Ep 78 ***
+*** NEW BEST MLP MODEL (Avg: 14.28) at Ep 84 ***
+*** NEW BEST MLP MODEL (Avg: 14.28) at Ep 85 ***
+*** NEW BEST MLP MODEL (Avg: 14.28) at Ep 88 ***
+*** NEW BEST MLP MODEL (Avg: 14.28) at Ep 89 ***
+*** NEW BEST MLP MODEL (Avg: 14.28) at Ep 91 ***
+*** NEW BEST MLP MODEL (Avg: 14.29) at Ep 92 ***
+*** NEW BEST MLP MODEL (Avg: 14.31) at Ep 95 ***
+MLP Ep 100 | Recent Avg: 14.28 | Best Avg: 14.31
+*** NEW BEST MLP MODEL (Avg: 14.32) at Ep 103 ***
+*** NEW BEST MLP MODEL (Avg: 14.32) at Ep 115 ***
+*** NEW BEST MLP MODEL (Avg: 14.32) at Ep 116 ***
+*** NEW BEST MLP MODEL (Avg: 14.32) at Ep 128 ***
+*** NEW BEST MLP MODEL (Avg: 14.32) at Ep 130 ***
+*** NEW BEST MLP MODEL (Avg: 14.32) at Ep 139 ***
+*** NEW BEST MLP MODEL (Avg: 14.33) at Ep 148 ***
+*** NEW BEST MLP MODEL (Avg: 14.33) at Ep 150 ***
+*** NEW BEST MLP MODEL (Avg: 14.33) at Ep 152 ***
+*** NEW BEST MLP MODEL (Avg: 14.33) at Ep 159 ***
+*** NEW BEST MLP MODEL (Avg: 14.33) at Ep 173 ***
+*** NEW BEST MLP MODEL (Avg: 14.33) at Ep 179 ***
+*** NEW BEST MLP MODEL (Avg: 14.33) at Ep 182 ***
+*** NEW BEST MLP MODEL (Avg: 14.34) at Ep 191 ***
+MLP Ep 200 | Recent Avg: 14.33 | Best Avg: 14.34
+*** NEW BEST MLP MODEL (Avg: 14.34) at Ep 234 ***
+*** NEW BEST MLP MODEL (Avg: 14.34) at Ep 299 ***
+MLP Ep 300 | Recent Avg: 14.33 | Best Avg: 14.34
+*** NEW BEST MLP MODEL (Avg: 14.34) at Ep 305 ***
+*** NEW BEST MLP MODEL (Avg: 14.34) at Ep 318 ***
+MLP Ep 400 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 500 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=500
+MLP Ep 600 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 700 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 800 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 900 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 1000 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=1000
+MLP Ep 1100 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 1200 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 1300 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 1400 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 1500 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=1500
+MLP Ep 1600 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 1700 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 1800 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 1900 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 2000 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=2000
+MLP Ep 2100 | Recent Avg: 14.28 | Best Avg: 14.34
+MLP Ep 2200 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 2300 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 2400 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 2500 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=2500
+MLP Ep 2600 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 2700 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 2800 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 2900 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 3000 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=3000
+MLP Ep 3100 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 3200 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 3300 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 3400 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 3500 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=3500
+MLP Ep 3600 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 3700 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 3800 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 3900 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 4000 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=4000
+MLP Ep 4100 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 4200 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 4300 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 4400 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 4500 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=4500
+MLP Ep 4600 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 4700 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 4800 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 4900 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 5000 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=5000
+MLP Ep 5100 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 5200 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 5300 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 5400 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 5500 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=5500
+MLP Ep 5600 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 5700 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 5800 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 5900 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 6000 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=6000
+MLP Ep 6100 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 6200 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 6300 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 6400 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 6500 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=6500
+MLP Ep 6600 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 6700 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 6800 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 6900 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 7000 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=7000
+MLP Ep 7100 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 7200 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 7300 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 7400 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 7500 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=7500
+MLP Ep 7600 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 7700 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 7800 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 7900 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 8000 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=8000
+MLP Ep 8100 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 8200 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 8300 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 8400 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 8500 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=8500
+MLP Ep 8600 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 8700 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 8800 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 8900 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 9000 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=9000
+MLP Ep 9100 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 9200 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 9300 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 9400 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 9500 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=9500
+MLP Ep 9600 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 9700 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 9800 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 9900 | Recent Avg: 14.31 | Best Avg: 14.34
+MLP Ep 10000 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=10000
+MLP Ep 10100 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 10200 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 10300 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 10400 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 10500 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=10500
+MLP Ep 10600 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 10700 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 10800 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 10900 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 11000 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=11000
+MLP Ep 11100 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 11200 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 11300 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 11400 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 11500 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=11500
+MLP Ep 11600 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 11700 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 11800 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 11900 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 12000 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=12000
+MLP Ep 12100 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 12200 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 12300 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 12400 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 12500 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=12500
+MLP Ep 12600 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 12700 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 12800 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 12900 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 13000 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=13000
+MLP Ep 13100 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 13200 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 13300 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 13400 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 13500 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=13500
+MLP Ep 13600 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 13700 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 13800 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 13900 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 14000 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=14000
+MLP Ep 14100 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 14200 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 14300 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 14400 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 14500 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=14500
+MLP Ep 14600 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 14700 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 14800 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 14900 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 15000 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=15000
+MLP Ep 15100 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 15200 | Recent Avg: 11.62 | Best Avg: 14.34
+MLP Ep 15300 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 15400 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 15500 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=15500
+MLP Ep 15600 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 15700 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 15800 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 15900 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 16000 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=16000
+MLP Ep 16100 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 16200 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 16300 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 16400 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 16500 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=16500
+*** NEW BEST MLP MODEL (Avg: 14.34) at Ep 16529 ***
+*** NEW BEST MLP MODEL (Avg: 14.34) at Ep 16530 ***
+MLP Ep 16600 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 16700 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 16800 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 16900 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 17000 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=17000
+MLP Ep 17100 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 17200 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 17300 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 17400 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 17500 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=17500
+MLP Ep 17600 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 17700 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 17800 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 17900 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 18000 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=18000
+MLP Ep 18100 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 18200 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 18300 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 18400 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 18500 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=18500
+MLP Ep 18600 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 18700 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 18800 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 18900 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 19000 | Recent Avg: 14.33 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=19000
+MLP Ep 19100 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 19200 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 19300 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 19400 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 19500 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=19500
+MLP Ep 19600 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 19700 | Recent Avg: 14.34 | Best Avg: 14.34
+MLP Ep 19800 | Recent Avg: 14.33 | Best Avg: 14.34
+MLP Ep 19900 | Recent Avg: 14.34 | Best Avg: 14.34
+[MLP] checkpoint saved → ep=19999
+[MLP] Done. Models saved to /projects/amfa5003/tangram-easy/checkpoints/mlp/seed1/
+
+[train_single] Training done in 1427.5 min. Evaluating ...
+[train_single] solve_rate=100.0%  reward=14.34±0.00
+[train_single] Policy saved → /projects/amfa5003/tangram-easy/policies/mlp_seed1.pth

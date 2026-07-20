@@ -1,0 +1,314 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[train_single] method=hrep  seed=1  episodes=20000  ckpt_dir=/projects/amfa5003/tangram-easy/checkpoints/hrep/seed1
+[H-rep] episodes=20000  start_ep=0  ckpt_dir=/projects/amfa5003/tangram-easy/checkpoints/hrep/seed1
+H-Rep rollout     0 | recent=0.12 | best=-inf
+*** NEW BEST H-REP  (avg=0.70) at rollout 6 ***
+*** NEW BEST H-REP  (avg=1.49) at rollout 8 ***
+*** NEW BEST H-REP  (avg=1.56) at rollout 11 ***
+*** NEW BEST H-REP  (avg=1.82) at rollout 15 ***
+*** NEW BEST H-REP  (avg=1.94) at rollout 16 ***
+*** NEW BEST H-REP  (avg=1.95) at rollout 19 ***
+*** NEW BEST H-REP  (avg=2.42) at rollout 61 ***
+*** NEW BEST H-REP  (avg=2.74) at rollout 92 ***
+H-Rep rollout   100 | recent=0.94 | best=2.74
+*** NEW BEST H-REP  (avg=3.81) at rollout 134 ***
+*** NEW BEST H-REP  (avg=4.41) at rollout 135 ***
+*** NEW BEST H-REP  (avg=4.50) at rollout 162 ***
+*** NEW BEST H-REP  (avg=5.55) at rollout 165 ***
+*** NEW BEST H-REP  (avg=6.18) at rollout 166 ***
+*** NEW BEST H-REP  (avg=6.71) at rollout 167 ***
+*** NEW BEST H-REP  (avg=8.44) at rollout 186 ***
+*** NEW BEST H-REP  (avg=9.82) at rollout 187 ***
+H-Rep rollout   200 | recent=6.14 | best=9.82
+H-Rep rollout   300 | recent=6.53 | best=9.82
+H-Rep rollout   400 | recent=3.60 | best=9.82
+*** NEW BEST H-REP  (avg=9.92) at rollout 489 ***
+H-Rep rollout   500 | recent=9.38 | best=9.92
+[H-rep] checkpoint saved → ep=500
+*** NEW BEST H-REP  (avg=10.89) at rollout 542 ***
+*** NEW BEST H-REP  (avg=10.93) at rollout 544 ***
+*** NEW BEST H-REP  (avg=11.62) at rollout 545 ***
+*** NEW BEST H-REP  (avg=12.22) at rollout 546 ***
+H-Rep rollout   600 | recent=8.03 | best=12.22
+H-Rep rollout   700 | recent=7.67 | best=12.22
+*** NEW BEST H-REP  (avg=12.31) at rollout 781 ***
+H-Rep rollout   800 | recent=7.89 | best=12.31
+*** NEW BEST H-REP  (avg=13.07) at rollout 810 ***
+*** NEW BEST H-REP  (avg=13.25) at rollout 866 ***
+H-Rep rollout   900 | recent=10.83 | best=13.25
+H-Rep rollout  1000 | recent=12.28 | best=13.25
+[H-rep] checkpoint saved → ep=1000
+H-Rep rollout  1100 | recent=12.78 | best=13.25
+*** NEW BEST H-REP  (avg=13.52) at rollout 1122 ***
+H-Rep rollout  1200 | recent=10.72 | best=13.52
+*** NEW BEST H-REP  (avg=13.75) at rollout 1245 ***
+H-Rep rollout  1300 | recent=11.10 | best=13.75
+*** NEW BEST H-REP  (avg=13.99) at rollout 1376 ***
+H-Rep rollout  1400 | recent=13.27 | best=13.99
+H-Rep rollout  1500 | recent=12.70 | best=13.99
+[H-rep] checkpoint saved → ep=1500
+*** NEW BEST H-REP  (avg=14.05) at rollout 1577 ***
+H-Rep rollout  1600 | recent=9.63 | best=14.05
+H-Rep rollout  1700 | recent=10.89 | best=14.05
+*** NEW BEST H-REP  (avg=14.07) at rollout 1779 ***
+*** NEW BEST H-REP  (avg=14.07) at rollout 1783 ***
+H-Rep rollout  1800 | recent=11.20 | best=14.07
+H-Rep rollout  1900 | recent=9.75 | best=14.07
+*** NEW BEST H-REP  (avg=14.16) at rollout 1977 ***
+*** NEW BEST H-REP  (avg=14.17) at rollout 1985 ***
+*** NEW BEST H-REP  (avg=14.20) at rollout 2000 ***
+H-Rep rollout  2000 | recent=14.15 | best=14.20
+[H-rep] checkpoint saved → ep=2000
+*** NEW BEST H-REP  (avg=14.22) at rollout 2013 ***
+*** NEW BEST H-REP  (avg=14.25) at rollout 2025 ***
+*** NEW BEST H-REP  (avg=14.26) at rollout 2047 ***
+H-Rep rollout  2100 | recent=12.51 | best=14.26
+*** NEW BEST H-REP  (avg=14.28) at rollout 2141 ***
+*** NEW BEST H-REP  (avg=14.28) at rollout 2156 ***
+H-Rep rollout  2200 | recent=14.14 | best=14.28
+H-Rep rollout  2300 | recent=14.02 | best=14.28
+*** NEW BEST H-REP  (avg=14.29) at rollout 2339 ***
+H-Rep rollout  2400 | recent=14.29 | best=14.29
+*** NEW BEST H-REP  (avg=14.30) at rollout 2403 ***
+*** NEW BEST H-REP  (avg=14.31) at rollout 2417 ***
+*** NEW BEST H-REP  (avg=14.31) at rollout 2464 ***
+*** NEW BEST H-REP  (avg=14.31) at rollout 2499 ***
+H-Rep rollout  2500 | recent=12.86 | best=14.31
+[H-rep] checkpoint saved → ep=2500
+*** NEW BEST H-REP  (avg=14.32) at rollout 2517 ***
+*** NEW BEST H-REP  (avg=14.32) at rollout 2518 ***
+*** NEW BEST H-REP  (avg=14.33) at rollout 2523 ***
+H-Rep rollout  2600 | recent=14.03 | best=14.33
+*** NEW BEST H-REP  (avg=14.33) at rollout 2652 ***
+H-Rep rollout  2700 | recent=14.32 | best=14.33
+H-Rep rollout  2800 | recent=14.32 | best=14.33
+*** NEW BEST H-REP  (avg=14.33) at rollout 2821 ***
+*** NEW BEST H-REP  (avg=14.34) at rollout 2828 ***
+*** NEW BEST H-REP  (avg=14.34) at rollout 2875 ***
+H-Rep rollout  2900 | recent=14.33 | best=14.34
+*** NEW BEST H-REP  (avg=14.34) at rollout 2952 ***
+*** NEW BEST H-REP  (avg=14.34) at rollout 2970 ***
+*** NEW BEST H-REP  (avg=14.34) at rollout 2976 ***
+H-Rep rollout  3000 | recent=14.33 | best=14.34
+[H-rep] checkpoint saved → ep=3000
+H-Rep rollout  3100 | recent=14.33 | best=14.34
+H-Rep rollout  3200 | recent=14.34 | best=14.34
+*** NEW BEST H-REP  (avg=14.34) at rollout 3270 ***
+H-Rep rollout  3300 | recent=14.34 | best=14.34
+*** NEW BEST H-REP  (avg=14.34) at rollout 3378 ***
+H-Rep rollout  3400 | recent=14.32 | best=14.34
+H-Rep rollout  3500 | recent=14.33 | best=14.34
+[H-rep] checkpoint saved → ep=3500
+H-Rep rollout  3600 | recent=14.34 | best=14.34
+H-Rep rollout  3700 | recent=14.33 | best=14.34
+H-Rep rollout  3800 | recent=14.34 | best=14.34
+*** NEW BEST H-REP  (avg=14.34) at rollout 3855 ***
+H-Rep rollout  3900 | recent=14.34 | best=14.34
+H-Rep rollout  4000 | recent=14.33 | best=14.34
+[H-rep] checkpoint saved → ep=4000
+H-Rep rollout  4100 | recent=14.33 | best=14.34
+H-Rep rollout  4200 | recent=14.33 | best=14.34
+*** NEW BEST H-REP  (avg=14.34) at rollout 4244 ***
+H-Rep rollout  4300 | recent=14.34 | best=14.34
+*** NEW BEST H-REP  (avg=14.34) at rollout 4392 ***
+H-Rep rollout  4400 | recent=14.33 | best=14.34
+H-Rep rollout  4500 | recent=14.33 | best=14.34
+[H-rep] checkpoint saved → ep=4500
+H-Rep rollout  4600 | recent=14.33 | best=14.34
+H-Rep rollout  4700 | recent=14.33 | best=14.34
+H-Rep rollout  4800 | recent=14.33 | best=14.34
+H-Rep rollout  4900 | recent=14.34 | best=14.34
+*** NEW BEST H-REP  (avg=14.34) at rollout 4972 ***
+H-Rep rollout  5000 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=5000
+*** NEW BEST H-REP  (avg=14.34) at rollout 5006 ***
+*** NEW BEST H-REP  (avg=14.34) at rollout 5011 ***
+H-Rep rollout  5100 | recent=14.33 | best=14.34
+H-Rep rollout  5200 | recent=14.34 | best=14.34
+H-Rep rollout  5300 | recent=14.34 | best=14.34
+H-Rep rollout  5400 | recent=14.34 | best=14.34
+H-Rep rollout  5500 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=5500
+H-Rep rollout  5600 | recent=14.33 | best=14.34
+H-Rep rollout  5700 | recent=12.99 | best=14.34
+H-Rep rollout  5800 | recent=14.34 | best=14.34
+H-Rep rollout  5900 | recent=14.33 | best=14.34
+H-Rep rollout  6000 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=6000
+H-Rep rollout  6100 | recent=14.34 | best=14.34
+H-Rep rollout  6200 | recent=14.33 | best=14.34
+H-Rep rollout  6300 | recent=14.33 | best=14.34
+H-Rep rollout  6400 | recent=14.34 | best=14.34
+H-Rep rollout  6500 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=6500
+H-Rep rollout  6600 | recent=14.34 | best=14.34
+H-Rep rollout  6700 | recent=14.34 | best=14.34
+H-Rep rollout  6800 | recent=14.33 | best=14.34
+H-Rep rollout  6900 | recent=14.34 | best=14.34
+H-Rep rollout  7000 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=7000
+H-Rep rollout  7100 | recent=14.33 | best=14.34
+H-Rep rollout  7200 | recent=14.34 | best=14.34
+H-Rep rollout  7300 | recent=14.34 | best=14.34
+H-Rep rollout  7400 | recent=14.34 | best=14.34
+H-Rep rollout  7500 | recent=14.33 | best=14.34
+[H-rep] checkpoint saved → ep=7500
+H-Rep rollout  7600 | recent=14.33 | best=14.34
+H-Rep rollout  7700 | recent=14.34 | best=14.34
+H-Rep rollout  7800 | recent=14.33 | best=14.34
+H-Rep rollout  7900 | recent=14.34 | best=14.34
+H-Rep rollout  8000 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=8000
+H-Rep rollout  8100 | recent=14.33 | best=14.34
+H-Rep rollout  8200 | recent=14.34 | best=14.34
+H-Rep rollout  8300 | recent=14.33 | best=14.34
+H-Rep rollout  8400 | recent=14.34 | best=14.34
+H-Rep rollout  8500 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=8500
+H-Rep rollout  8600 | recent=14.34 | best=14.34
+H-Rep rollout  8700 | recent=14.34 | best=14.34
+H-Rep rollout  8800 | recent=14.34 | best=14.34
+H-Rep rollout  8900 | recent=14.33 | best=14.34
+H-Rep rollout  9000 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=9000
+H-Rep rollout  9100 | recent=14.34 | best=14.34
+H-Rep rollout  9200 | recent=14.34 | best=14.34
+H-Rep rollout  9300 | recent=14.34 | best=14.34
+H-Rep rollout  9400 | recent=14.34 | best=14.34
+H-Rep rollout  9500 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=9500
+H-Rep rollout  9600 | recent=14.33 | best=14.34
+H-Rep rollout  9700 | recent=14.33 | best=14.34
+H-Rep rollout  9800 | recent=14.34 | best=14.34
+H-Rep rollout  9900 | recent=14.34 | best=14.34
+H-Rep rollout 10000 | recent=14.33 | best=14.34
+[H-rep] checkpoint saved → ep=10000
+H-Rep rollout 10100 | recent=14.33 | best=14.34
+H-Rep rollout 10200 | recent=14.34 | best=14.34
+H-Rep rollout 10300 | recent=14.33 | best=14.34
+H-Rep rollout 10400 | recent=14.34 | best=14.34
+H-Rep rollout 10500 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=10500
+H-Rep rollout 10600 | recent=14.33 | best=14.34
+H-Rep rollout 10700 | recent=14.33 | best=14.34
+H-Rep rollout 10800 | recent=14.33 | best=14.34
+H-Rep rollout 10900 | recent=14.33 | best=14.34
+H-Rep rollout 11000 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=11000
+H-Rep rollout 11100 | recent=14.34 | best=14.34
+H-Rep rollout 11200 | recent=14.33 | best=14.34
+H-Rep rollout 11300 | recent=14.34 | best=14.34
+H-Rep rollout 11400 | recent=14.34 | best=14.34
+H-Rep rollout 11500 | recent=14.31 | best=14.34
+[H-rep] checkpoint saved → ep=11500
+H-Rep rollout 11600 | recent=14.33 | best=14.34
+H-Rep rollout 11700 | recent=14.33 | best=14.34
+H-Rep rollout 11800 | recent=14.34 | best=14.34
+H-Rep rollout 11900 | recent=14.34 | best=14.34
+H-Rep rollout 12000 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=12000
+H-Rep rollout 12100 | recent=14.34 | best=14.34
+H-Rep rollout 12200 | recent=14.33 | best=14.34
+H-Rep rollout 12300 | recent=14.34 | best=14.34
+H-Rep rollout 12400 | recent=14.34 | best=14.34
+H-Rep rollout 12500 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=12500
+H-Rep rollout 12600 | recent=14.34 | best=14.34
+H-Rep rollout 12700 | recent=14.34 | best=14.34
+H-Rep rollout 12800 | recent=14.34 | best=14.34
+H-Rep rollout 12900 | recent=14.34 | best=14.34
+H-Rep rollout 13000 | recent=14.33 | best=14.34
+[H-rep] checkpoint saved → ep=13000
+H-Rep rollout 13100 | recent=14.34 | best=14.34
+H-Rep rollout 13200 | recent=14.34 | best=14.34
+H-Rep rollout 13300 | recent=14.34 | best=14.34
+H-Rep rollout 13400 | recent=14.34 | best=14.34
+H-Rep rollout 13500 | recent=14.33 | best=14.34
+[H-rep] checkpoint saved → ep=13500
+H-Rep rollout 13600 | recent=14.34 | best=14.34
+H-Rep rollout 13700 | recent=14.34 | best=14.34
+H-Rep rollout 13800 | recent=14.34 | best=14.34
+H-Rep rollout 13900 | recent=14.34 | best=14.34
+H-Rep rollout 14000 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=14000
+H-Rep rollout 14100 | recent=14.34 | best=14.34
+H-Rep rollout 14200 | recent=14.33 | best=14.34
+H-Rep rollout 14300 | recent=14.33 | best=14.34
+H-Rep rollout 14400 | recent=14.33 | best=14.34
+H-Rep rollout 14500 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=14500
+H-Rep rollout 14600 | recent=14.33 | best=14.34
+H-Rep rollout 14700 | recent=14.34 | best=14.34
+H-Rep rollout 14800 | recent=14.34 | best=14.34
+H-Rep rollout 14900 | recent=14.33 | best=14.34
+H-Rep rollout 15000 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=15000
+H-Rep rollout 15100 | recent=14.33 | best=14.34
+H-Rep rollout 15200 | recent=14.33 | best=14.34
+H-Rep rollout 15300 | recent=14.34 | best=14.34
+H-Rep rollout 15400 | recent=14.33 | best=14.34
+H-Rep rollout 15500 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=15500
+H-Rep rollout 15600 | recent=14.34 | best=14.34
+H-Rep rollout 15700 | recent=14.33 | best=14.34
+H-Rep rollout 15800 | recent=14.34 | best=14.34
+H-Rep rollout 15900 | recent=14.34 | best=14.34
+H-Rep rollout 16000 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=16000
+H-Rep rollout 16100 | recent=14.33 | best=14.34
+H-Rep rollout 16200 | recent=14.33 | best=14.34
+H-Rep rollout 16300 | recent=14.34 | best=14.34
+H-Rep rollout 16400 | recent=14.33 | best=14.34
+H-Rep rollout 16500 | recent=14.33 | best=14.34
+[H-rep] checkpoint saved → ep=16500
+H-Rep rollout 16600 | recent=14.33 | best=14.34
+H-Rep rollout 16700 | recent=14.34 | best=14.34
+H-Rep rollout 16800 | recent=14.33 | best=14.34
+H-Rep rollout 16900 | recent=14.34 | best=14.34
+H-Rep rollout 17000 | recent=14.33 | best=14.34
+[H-rep] checkpoint saved → ep=17000
+H-Rep rollout 17100 | recent=14.33 | best=14.34
+H-Rep rollout 17200 | recent=14.33 | best=14.34
+H-Rep rollout 17300 | recent=14.33 | best=14.34
+H-Rep rollout 17400 | recent=14.33 | best=14.34
+H-Rep rollout 17500 | recent=14.33 | best=14.34
+[H-rep] checkpoint saved → ep=17500
+H-Rep rollout 17600 | recent=14.33 | best=14.34
+H-Rep rollout 17700 | recent=14.33 | best=14.34
+H-Rep rollout 17800 | recent=14.33 | best=14.34
+H-Rep rollout 17900 | recent=14.34 | best=14.34
+H-Rep rollout 18000 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=18000
+H-Rep rollout 18100 | recent=14.34 | best=14.34
+H-Rep rollout 18200 | recent=14.33 | best=14.34
+H-Rep rollout 18300 | recent=14.33 | best=14.34
+H-Rep rollout 18400 | recent=14.34 | best=14.34
+H-Rep rollout 18500 | recent=14.33 | best=14.34
+[H-rep] checkpoint saved → ep=18500
+H-Rep rollout 18600 | recent=14.34 | best=14.34
+H-Rep rollout 18700 | recent=14.33 | best=14.34
+H-Rep rollout 18800 | recent=14.34 | best=14.34
+H-Rep rollout 18900 | recent=14.34 | best=14.34
+H-Rep rollout 19000 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=19000
+H-Rep rollout 19100 | recent=14.34 | best=14.34
+H-Rep rollout 19200 | recent=14.33 | best=14.34
+H-Rep rollout 19300 | recent=14.33 | best=14.34
+H-Rep rollout 19400 | recent=14.33 | best=14.34
+H-Rep rollout 19500 | recent=14.34 | best=14.34
+[H-rep] checkpoint saved → ep=19500
+H-Rep rollout 19600 | recent=14.34 | best=14.34
+H-Rep rollout 19700 | recent=14.34 | best=14.34
+H-Rep rollout 19800 | recent=14.33 | best=14.34
+H-Rep rollout 19900 | recent=14.33 | best=14.34
+[H-rep] checkpoint saved → ep=19999
+[H-rep] Done. Models saved to /projects/amfa5003/tangram-easy/checkpoints/hrep/seed1/
+Traceback (most recent call last):
+  File "/projects/amfa5003/tangram-easy/train_single.py", line 141, in <module>
+    main()
+  File "/projects/amfa5003/tangram-easy/train_single.py", line 115, in main
+    _, best_model = TRAIN[args.method](
+ValueError: too many values to unpack (expected 2)
