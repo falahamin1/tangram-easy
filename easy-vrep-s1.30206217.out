@@ -1,0 +1,23 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[train_single] method=vrep  seed=1  episodes=20000  ckpt_dir=/projects/amfa5003/tangram-easy/checkpoints/vrep/seed1
+[V-rep] Resuming from /projects/amfa5003/tangram-easy/checkpoints/vrep/seed1/checkpoint_ep0019000.pth
+[V-rep] episodes=20000  start_ep=19001  ckpt_dir=/projects/amfa5003/tangram-easy/checkpoints/vrep/seed1
+V-Rep rollout 19100 | recent=14.34 | best=14.34
+V-Rep rollout 19200 | recent=14.33 | best=14.34
+V-Rep rollout 19300 | recent=14.33 | best=14.34
+V-Rep rollout 19400 | recent=14.34 | best=14.34
+V-Rep rollout 19500 | recent=14.33 | best=14.34
+[V-rep] checkpoint saved → ep=19500
+V-Rep rollout 19600 | recent=14.34 | best=14.34
+V-Rep rollout 19700 | recent=14.34 | best=14.34
+V-Rep rollout 19800 | recent=14.33 | best=14.34
+V-Rep rollout 19900 | recent=12.92 | best=14.34
+[V-rep] checkpoint saved → ep=19999
+[V-rep] Done. Models saved to /projects/amfa5003/tangram-easy/checkpoints/vrep/seed1/
+
+[train_single] Training done in 34.2 min. Evaluating ...
+[train_single] solve_rate=100.0%  reward=14.34±0.00
+[train_single] Policy saved → /projects/amfa5003/tangram-easy/policies/vrep_seed1.pth

@@ -1,0 +1,53 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[train_single] method=cnn  seed=2  episodes=20000  ckpt_dir=/projects/amfa5003/tangram-easy/checkpoints/cnn/seed2
+[CNN] Resuming from /projects/amfa5003/tangram-easy/checkpoints/cnn/seed2/checkpoint_ep0016500.pth
+[CNN] episodes=20000  start_ep=16501  ckpt_dir=/projects/amfa5003/tangram-easy/checkpoints/cnn/seed2  seed=2
+CNN Ep 16600 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 16700 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 16800 | Recent Avg: 14.33 | Best Avg: 14.34
+CNN Ep 16900 | Recent Avg: 14.33 | Best Avg: 14.34
+CNN Ep 17000 | Recent Avg: 14.34 | Best Avg: 14.34
+[CNN] checkpoint saved → ep=17000
+CNN Ep 17100 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 17200 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 17300 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 17400 | Recent Avg: 14.33 | Best Avg: 14.34
+CNN Ep 17500 | Recent Avg: 14.34 | Best Avg: 14.34
+[CNN] checkpoint saved → ep=17500
+CNN Ep 17600 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 17700 | Recent Avg: 14.33 | Best Avg: 14.34
+CNN Ep 17800 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 17900 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 18000 | Recent Avg: 14.33 | Best Avg: 14.34
+[CNN] checkpoint saved → ep=18000
+CNN Ep 18100 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 18200 | Recent Avg: 14.33 | Best Avg: 14.34
+CNN Ep 18300 | Recent Avg: 14.33 | Best Avg: 14.34
+CNN Ep 18400 | Recent Avg: 14.33 | Best Avg: 14.34
+CNN Ep 18500 | Recent Avg: 14.34 | Best Avg: 14.34
+[CNN] checkpoint saved → ep=18500
+CNN Ep 18600 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 18700 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 18800 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 18900 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 19000 | Recent Avg: 14.34 | Best Avg: 14.34
+[CNN] checkpoint saved → ep=19000
+CNN Ep 19100 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 19200 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 19300 | Recent Avg: 14.33 | Best Avg: 14.34
+CNN Ep 19400 | Recent Avg: 14.33 | Best Avg: 14.34
+CNN Ep 19500 | Recent Avg: 14.34 | Best Avg: 14.34
+[CNN] checkpoint saved → ep=19500
+CNN Ep 19600 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 19700 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 19800 | Recent Avg: 14.34 | Best Avg: 14.34
+CNN Ep 19900 | Recent Avg: 14.34 | Best Avg: 14.34
+[CNN] checkpoint saved → ep=19999
+[CNN] Done. Models saved to /projects/amfa5003/tangram-easy/checkpoints/cnn/seed2/
+
+[train_single] Training done in 175.0 min. Evaluating ...
+[train_single] solve_rate=100.0%  reward=14.34±0.00
+[train_single] Policy saved → /projects/amfa5003/tangram-easy/policies/cnn_seed2.pth

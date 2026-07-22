@@ -1,0 +1,13 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[train_single] method=gnn  seed=2  episodes=20000  ckpt_dir=/projects/amfa5003/tangram-easy/checkpoints/gnn/seed2
+[GNN] Resuming from /projects/amfa5003/tangram-easy/checkpoints/gnn/seed2/checkpoint_ep0019999.pth
+[GNN] episodes=20000  start_ep=20000  ckpt_dir=/projects/amfa5003/tangram-easy/checkpoints/gnn/seed2
+[GNN] checkpoint saved → ep=19999
+[GNN] Done. Models saved to /projects/amfa5003/tangram-easy/checkpoints/gnn/seed2/
+
+[train_single] Training done in 0.1 min. Evaluating ...
+[train_single] solve_rate=0.0%  reward=-1.20±0.00
+[train_single] Policy saved → /projects/amfa5003/tangram-easy/policies/gnn_seed2.pth
