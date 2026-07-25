@@ -18,6 +18,7 @@ ALL_METHODS = ['hrep', 'vrep', 'gnn', 'mlp', 'cnn']
 SEEDS = [0, 1, 2]
 EPISODES = 20000
 WALLTIME = '24:00:00'
+QOS = 'normal'  # Alpine's 'normal' QoS caps walltime at 24h; anything longer needs --qos=long
 PREFIX = 'easy'
 
 TEMPLATE = """#!/bin/bash
@@ -29,7 +30,7 @@ TEMPLATE = """#!/bin/bash
 #SBATCH --mem=20G
 #SBATCH --job-name={prefix}-{method}-s{seed}
 #SBATCH --output={prefix}-{method}-s{seed}.%j.out
-#SBATCH --qos=normal
+#SBATCH --qos={qos}
 
 module purge
 module load anaconda
@@ -51,6 +52,9 @@ def main():
     ap.add_argument('--seeds', nargs='+', type=int, default=SEEDS)
     ap.add_argument('--walltime', default=WALLTIME,
                      help='SBATCH --time override, e.g. --walltime 48:00:00')
+    ap.add_argument('--qos', default=QOS,
+                     help="SBATCH --qos override -- Alpine's 'normal' QoS caps at 24h, "
+                          "use --qos long for anything beyond that")
     ap.add_argument('--force', action='store_true',
                      help='Overwrite files that already exist')
     args = ap.parse_args()
@@ -67,6 +71,7 @@ def main():
                 continue
             content = TEMPLATE.format(
                 walltime=args.walltime,
+                qos=args.qos,
                 method=method,
                 seed=seed,
                 episodes=EPISODES,
