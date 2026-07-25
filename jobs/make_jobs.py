@@ -49,6 +49,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--methods', nargs='+', default=ALL_METHODS, choices=ALL_METHODS)
     ap.add_argument('--seeds', nargs='+', type=int, default=SEEDS)
+    ap.add_argument('--walltime', default=WALLTIME,
+                     help='SBATCH --time override, e.g. --walltime 48:00:00')
     ap.add_argument('--force', action='store_true',
                      help='Overwrite files that already exist')
     args = ap.parse_args()
@@ -64,7 +66,7 @@ def main():
                 skipped += 1
                 continue
             content = TEMPLATE.format(
-                walltime=WALLTIME,
+                walltime=args.walltime,
                 method=method,
                 seed=seed,
                 episodes=EPISODES,

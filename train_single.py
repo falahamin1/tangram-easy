@@ -20,6 +20,7 @@ import time
 import argparse
 import torch
 import numpy as np
+from torch.distributions import Categorical
 
 sys.path.insert(0, os.path.dirname(__file__))
 from easy_env import EasyTangramGym
@@ -45,38 +46,55 @@ TRAIN = {
 }
 
 
-def _get_action(model, method, obs, mask):
+def _get_logits(model, method, obs):
+    if method == 'hrep':
+        s = torch.tensor(obs['h_rep'], dtype=torch.float32).view(1, NUM_PIECES, H_DIM)
+        logits, _ = model(s)
+    elif method == 'vrep':
+        s = torch.tensor(obs['v_rep'], dtype=torch.float32).view(1, NUM_PIECES, V_DIM)
+        logits, _ = model(s)
+    elif method == 'gnn':
+        h   = torch.tensor(obs['h_rep'], dtype=torch.float32).unsqueeze(0)
+        adj = torch.tensor(obs['adj'],   dtype=torch.float32).unsqueeze(0)
+        logits, _ = model(h, adj)
+    elif method == 'mlp':
+        s = torch.tensor(obs['flat_pose'], dtype=torch.float32).unsqueeze(0)
+        logits, _ = model(s)
+    else:  # cnn
+        s = torch.tensor(obs['grid_image'], dtype=torch.float32).unsqueeze(0)
+        logits, _ = model(s)
+    return logits
+
+
+def _get_action(model, method, obs, mask, mode='greedy', rng=None):
+    """mode='greedy': argmax (deterministic). mode='stochastic': sample from
+    the policy's own softmax distribution using a dedicated numpy Generator,
+    kept separate from torch's global RNG. Also returns this step's entropy."""
     with torch.no_grad():
-        if method == 'hrep':
-            s = torch.tensor(obs['h_rep'], dtype=torch.float32).view(1, NUM_PIECES, H_DIM)
-            logits, _ = model(s)
-        elif method == 'vrep':
-            s = torch.tensor(obs['v_rep'], dtype=torch.float32).view(1, NUM_PIECES, V_DIM)
-            logits, _ = model(s)
-        elif method == 'gnn':
-            h   = torch.tensor(obs['h_rep'], dtype=torch.float32).unsqueeze(0)
-            adj = torch.tensor(obs['adj'],   dtype=torch.float32).unsqueeze(0)
-            logits, _ = model(h, adj)
-        elif method == 'mlp':
-            s = torch.tensor(obs['flat_pose'], dtype=torch.float32).unsqueeze(0)
-            logits, _ = model(s)
-        else:  # cnn
-            s = torch.tensor(obs['grid_image'], dtype=torch.float32).unsqueeze(0)
-            logits, _ = model(s)
+        logits = _get_logits(model, method, obs)
         logits[0][~mask] = -1e10
-        return torch.argmax(logits, dim=-1).item()
+        dist = Categorical(logits=logits)
+        entropy = dist.entropy().item()
+        if mode == 'greedy':
+            action = torch.argmax(logits, dim=-1).item()
+        else:
+            probs = torch.softmax(logits, dim=-1).squeeze(0).numpy()
+            probs = probs / probs.sum()
+            action = int(rng.choice(len(probs), p=probs))
+        return action, entropy
 
 
-def evaluate(model, method, eval_episodes=50):
+def _run_eval_episodes(model, method, mode, eval_episodes, rng=None):
     model.eval()
-    rewards, solves = [], 0
+    rewards, solves, entropies = [], 0, []
     for _ in range(eval_episodes):
         env = EasyTangramGym()
         obs = env.reset()
         total = 0.0
         for _ in range(env.max_steps):
             mask = torch.tensor(env.get_action_mask(), dtype=torch.bool)
-            action = _get_action(model, method, obs, mask)
+            action, ent = _get_action(model, method, obs, mask, mode=mode, rng=rng)
+            entropies.append(ent)
             obs, r, done, info = env.step(action)
             total += r
             if done:
@@ -88,6 +106,31 @@ def evaluate(model, method, eval_episodes=50):
         'mean_reward': float(np.mean(rewards)),
         'std_reward':  float(np.std(rewards)),
         'solve_rate':  solves / eval_episodes,
+        'mean_entropy': float(np.mean(entropies)) if entropies else None,
+    }
+
+
+def evaluate(model, method, eval_episodes=50, seed=0):
+    """Dual-mode evaluation: greedy (argmax, deterministic) measures whether
+    the policy has become decisive and correct; stochastic (sampling)
+    measures whether it carries useful bias even when not fully decisive.
+    Also returns final_entropy (mean policy entropy over the greedy rollout
+    states), since a 0%-solve run can either be near-uniform (undertrained)
+    or confidently-wrong -- entropy is what tells those apart."""
+    rng = np.random.default_rng(seed)
+    greedy = _run_eval_episodes(model, method, 'greedy', eval_episodes)
+    stochastic = _run_eval_episodes(model, method, 'stochastic', eval_episodes, rng=rng)
+    return {
+        'mean_reward': greedy['mean_reward'],
+        'std_reward': greedy['std_reward'],
+        'solve_rate': greedy['solve_rate'],
+        'mean_reward_greedy': greedy['mean_reward'],
+        'std_reward_greedy': greedy['std_reward'],
+        'solve_rate_greedy': greedy['solve_rate'],
+        'mean_reward_stochastic': stochastic['mean_reward'],
+        'std_reward_stochastic': stochastic['std_reward'],
+        'solve_rate_stochastic': stochastic['solve_rate'],
+        'final_entropy': greedy['mean_entropy'],
     }
 
 
@@ -124,10 +167,11 @@ def main():
     best_model = result[1]
     elapsed = time.time() - t0
 
-    print(f"\n[train_single] Training done in {elapsed/60:.1f} min. Evaluating ...")
-    metrics = evaluate(best_model, args.method, eval_episodes=args.eval_episodes)
-    print(f"[train_single] solve_rate={metrics['solve_rate']*100:.1f}%  "
-          f"reward={metrics['mean_reward']:.2f}±{metrics['std_reward']:.2f}")
+    print(f"\n[train_single] Training done in {elapsed/60:.1f} min. Evaluating (greedy + stochastic) ...")
+    metrics = evaluate(best_model, args.method, eval_episodes=args.eval_episodes, seed=args.seed)
+    print(f"[train_single] greedy solve_rate={metrics['solve_rate_greedy']*100:.1f}%  "
+          f"stochastic solve_rate={metrics['solve_rate_stochastic']*100:.1f}%  "
+          f"final_entropy={metrics['final_entropy']:.4f}")
 
     os.makedirs(POLICY_DIR, exist_ok=True)
     torch.save({
